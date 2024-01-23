@@ -12,8 +12,10 @@ import lombok.Setter;
 public class MessageDTO {
     private String clientMessage;
     private String serverMessage;
+    private Integer status;
 
-    public MessageDTO(String message) {
+    public MessageDTO(String message, Integer status) {
         this.clientMessage = message;
+        this.status = status;
     }
 }

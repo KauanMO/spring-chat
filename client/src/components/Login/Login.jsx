@@ -3,25 +3,33 @@ import styles from './Login.module.css'
 import { Input } from "../Input/Input";
 import { Button } from "../Button/Button";
 import { ClickableText } from "../Text/Text";
+import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
+    const navigate = useNavigate();
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     async function handleOnClickLogin() {
-        const loginRes = await fetch('http://localhost:8080/user', {
-            headers: {
-                "Content-type": "application/json"
-            },
-            method: 'POST',
-            body: JSON.stringify({
-                username,
-                password
-            })
-        });
+        try {
+            const loginRes = await fetch('http://localhost:8080/user', {
+                headers: {
+                    "Content-type": "application/json"
+                },
+                method: 'POST',
+                body: JSON.stringify({
+                    username,
+                    password
+                })
+            });
 
-        const login = await loginRes.json();
+            const login = await loginRes.json();
+
+            if (login.status === 200) {
+                navigate('/chat')
+            }
+        } catch (e) { }
     }
 
     return (
@@ -30,7 +38,7 @@ export const Login = () => {
                 <Input id={'input_username'} type={'text'} handleOnChange={e => { setUsername(e.target.value); }} styleClass={'login'} label={'Username'} />
                 <Input id={'input_senha'} type={'password'} handleOnChange={e => { setPassword(e.target.value); }} styleClass={'login'} label={'Senha'} />
                 <Button label={'Login'} handleOnClick={handleOnClickLogin} styleClass={'login'} />
-                <ClickableText text={'Não possuo uma conta'} color={'white'} fontSize={'1.1rem'} />
+                <ClickableText text={'Não possuo uma conta'} color={'white'} fontSize={'1.1rem'} handleOnClick={() => { navigate('/register') }} />
             </div>
         </div>
     );

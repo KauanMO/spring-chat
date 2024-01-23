@@ -3,7 +3,7 @@
     border: 1px solid white;
 }
 
-.login {
+.login, .register {
     width: 40%;
     background-color: unset;
     color: white;

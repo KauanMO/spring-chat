@@ -9,7 +9,7 @@
     font-size: 1.3rem;
 }
 
-.login {
+.login, .register {
     font-size: 1.5rem;
     width: 70%;
     background-color: unset;
