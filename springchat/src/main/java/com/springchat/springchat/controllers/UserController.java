@@ -2,6 +2,7 @@ package com.springchat.springchat.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,8 @@ public class UserController {
     @Autowired
     private UserRepository repository;
 
-    @PostMapping
+    @PostMapping(consumes = "application/json")
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<MessageDTO> login(@RequestBody UserLoginDTO user) {
         MessageDTO mensagem = repository.findByUsernameAndPassword(user.username(), user.password()) != null
                 ? new MessageDTO("Login realizado")
