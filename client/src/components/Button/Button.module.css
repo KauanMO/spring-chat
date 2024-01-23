@@ -1,0 +1,13 @@
+.button {
+    border-radius: .3rem;
+    border: 1px solid white;
+}
+
+.login {
+    width: 40%;
+    background-color: unset;
+    color: white;
+    border-radius: 1rem;
+    padding: .5rem 1rem;
+    box-shadow: black .2rem .2rem;
+}
