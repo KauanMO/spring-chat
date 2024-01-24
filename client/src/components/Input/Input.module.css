@@ -13,6 +13,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 
 .label {
@@ -27,4 +28,13 @@
     background-color: unset;
     padding: .2rem .5rem;
     color: black;
+}
+
+.chat_message {
+    width: 90%;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: .5rem;
+    position: absolute;
+    height: 1rem;
 }

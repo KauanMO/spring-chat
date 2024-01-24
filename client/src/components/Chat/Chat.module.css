@@ -1,0 +1,33 @@
+.container {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+}
+
+.submit_button {
+    position: absolute;
+    background-color: #7494EA;
+    border-radius: 50%;
+    padding: .4rem;
+    right: 3%;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 50ms ease-in;
+    width: 3%;
+    display: flex;
+    justify-content: center;
+    height: 1.5rem;
+    align-items: center;
+}
+
+.submit_button:hover {
+    background-color: #004385;
+}
+
+.chat_message {
+    position: absolute;
+    width: 100%;
+    bottom: 7%;
+}
