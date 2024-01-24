@@ -27,9 +27,12 @@ export const Login = () => {
             const login = await loginRes.json();
 
             if (login.status === 200) {
-                navigate('/chat')
+                sessionStorage.setItem('id', login.clientMessage);
+                navigate('/chat');
             }
-        } catch (e) { }
+        } catch (e) {
+            console.log(e);
+        }
     }
 
     return (
@@ -38,7 +41,7 @@ export const Login = () => {
                 <Input id={'input_username'} type={'text'} handleOnChange={e => { setUsername(e.target.value); }} styleClass={'login'} label={'Username'} />
                 <Input id={'input_senha'} type={'password'} handleOnChange={e => { setPassword(e.target.value); }} styleClass={'login'} label={'Senha'} />
                 <Button label={'Login'} handleOnClick={handleOnClickLogin} styleClass={'login'} />
-                <ClickableText text={'Não possuo uma conta'} color={'white'} fontSize={'1.1rem'} handleOnClick={() => { navigate('/register') }} />
+                <ClickableText text={'Não possuo uma conta'} color={'black'} fontSize={'1.1rem'} handleOnClick={() => { navigate('/register') }} />
             </div>
         </div>
     );

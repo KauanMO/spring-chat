@@ -8,14 +8,14 @@ import { useNavigate } from 'react-router-dom';
 
 export const RegisterForm = () => {
     const navigate = useNavigate();
-    
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
     async function register() {
         if (confirmPassword === password) {
-            await fetch('http://localhost:8080/user/register', {
+            const userRes = await fetch('http://localhost:8080/user/register', {
                 headers: {
                     "Content-type": "application/json"
                 },
@@ -24,7 +24,11 @@ export const RegisterForm = () => {
                     username,
                     password
                 })
-            })
+            });
+
+            const user = await userRes.json();
+
+            sessionStorage.setItem('id', user);
         }
     }
 
@@ -35,7 +39,7 @@ export const RegisterForm = () => {
                 <Input type={'password'} label={'Senha'} styleClass={'register'} handleOnChange={e => { setPassword(e.target.value) }} />
                 <Input type={'password'} label={'Confirme a senha'} styleClass={'register'} handleOnChange={e => { setConfirmPassword(e.target.value) }} />
                 <Button styleClass={'register'} label={'Cadastrar'} handleOnClick={register} />
-                <ClickableText text={'Possuo uma conta'} color={'white'} fontSize={'1.1rem'} handleOnClick={() => { navigate('/') }} />
+                <ClickableText text={'Possuo uma conta'} color={'black'} fontSize={'1.1rem'} handleOnClick={() => { navigate('/') }} />
             </div>
         </div>
     );

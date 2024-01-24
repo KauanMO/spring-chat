@@ -23,8 +23,9 @@ public class UserController {
     @PostMapping(consumes = "application/json")
     @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<MessageDTO> login(@RequestBody UserLoginDTO user) {
-        return repository.findByUsernameAndPassword(user.username(), user.password()) != null
-                ? ResponseEntity.ok(new MessageDTO("Login realizado", 200))
+        User userFound = repository.findByUsernameAndPassword(user.username(), user.password());
+        return userFound != null
+                ? ResponseEntity.ok(new MessageDTO(userFound.getUserid(), "Login realizado", 200))
                 : ResponseEntity.ok(new MessageDTO("Usuário não encontrado", 404));
     }
 
@@ -34,6 +35,6 @@ public class UserController {
         User newUser = new User(user);
         repository.save(newUser);
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(newUser.getUserid());
     }
 }
