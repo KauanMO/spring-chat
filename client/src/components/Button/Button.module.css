@@ -1,12 +1,18 @@
 .button {
     border-radius: .3rem;
-    border: 1px solid white;
+    border: 1px solid black;
+    transition: all 100ms ease-in;
+}
+
+.button:hover {
+    background-color: black;
+    color: white;
 }
 
 .login, .register {
     width: 40%;
     background-color: unset;
-    color: white;
+    color: black;
     border-radius: 1rem;
     padding: .5rem 1rem;
     box-shadow: black .2rem .2rem;

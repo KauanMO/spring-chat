@@ -1,3 +1,14 @@
+.input {
+    border: white;
+    border-bottom: 1px solid black;
+    transition: all 150ms ease-in;
+}
+
+.input:focus {
+    outline: none;
+    border-bottom: 2px solid black;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -9,12 +20,11 @@
     font-size: 1.3rem;
 }
 
-.login, .register {
+.login,
+.register {
     font-size: 1.5rem;
     width: 70%;
     background-color: unset;
-    border: unset;
-    border-bottom: 1px solid white;
     padding: .2rem .5rem;
-    color: white;
+    color: black;
 }
