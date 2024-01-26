@@ -19,7 +19,7 @@ public class User {
 
     private String password;
 
-    public User(UserRegisterDTO registerDTO) {
+    public User(UserDTO registerDTO) {
         this.username = registerDTO.username();
         this.password = registerDTO.password();
     }
