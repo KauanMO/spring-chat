@@ -23,4 +23,6 @@ public class User {
         this.username = registerDTO.username();
         this.password = registerDTO.password();
     }
+
+    public record UserToClient(String username, String userid) {}
 }
