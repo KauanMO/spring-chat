@@ -1,6 +1,8 @@
 package com.springchat.springchat.services;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -14,12 +16,14 @@ public class MessageService {
     public List<Message> convertProjectionsToMessages(List<MessageProjection> projections) {
         List<Message> messages = new ArrayList<>();
 
-        for (MessageProjection projection : projections) { 
+        for (MessageProjection projection : projections) {
             Message message = new Message();
 
             message.setMessageid(projection.getMessageid());
             message.setMessage(projection.getMessage());
+
             message.setDate(projection.getDate());
+
             message.setUser(new User());
 
             message.getUser().setUserid(projection.getUser().getUserid());

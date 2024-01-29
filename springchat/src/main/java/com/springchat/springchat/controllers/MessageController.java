@@ -1,8 +1,10 @@
 package com.springchat.springchat.controllers;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,6 +33,8 @@ public class MessageController {
     @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<ReturnMessageDTO> registerMessage(@RequestBody MessageDTO message) {
         Message mensagem = new Message(message);
+        if (mensagem.getDate() == null) mensagem.setDate(LocalDateTime.now());
+
         repository.save(mensagem);
 
         return ResponseEntity.ok(new ReturnMessageDTO("Mensagem enviada", 200));
@@ -39,7 +43,7 @@ public class MessageController {
     @GetMapping
     @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<List<Message>> findLastMessages() {
-        List<MessageProjection> messageProjections = repository.findLastMessagesWithProjection();
+        List<MessageProjection> messageProjections = repository.findLastMessagesWithProjection(PageRequest.of(0,20));
         List<Message> messages = service.convertProjectionsToMessages(messageProjections);
 
         return ResponseEntity.ok(messages);
