@@ -2,8 +2,25 @@ import { AiFillCaretRight } from "react-icons/ai";
 import React, { useState } from "react";
 import styles from './Chat.module.css'
 import { Input } from "../Input/Input";
+import { Client } from '@stomp/stompjs';
 
 export const Chat = () => {
+    function onConnect(e) {
+        console.log('s');
+    }
+
+    function onStompError(e) {
+        console.log(e);
+    }
+
+    const client = new Client({
+        brokerURL: `ws:/localhost:8080/ws-messages`,
+        onConnect,
+        onStompError
+    });
+
+    client.activate();
+
     const [message, setMessage] = useState('');
 
     const SubmitButton = () => {
