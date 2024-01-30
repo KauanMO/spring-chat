@@ -20,16 +20,16 @@ public class UserController {
     private UserRepository repository;
 
     @PostMapping(consumes = "application/json")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     public ResponseEntity<ReturnMessageDTO> login(@RequestBody UserDTO user) {
         User userFound = repository.findByUsernameAndPassword(user.username(), user.password());
         return userFound != null
-                ? ResponseEntity.ok(new ReturnMessageDTO(userFound.getUserid(), "Login realizado", 200))
-                : ResponseEntity.ok(new ReturnMessageDTO("Usuário não encontrado", 404));
+                ? ResponseEntity.ok(new ReturnMessageDTO<String>("Login realizado", 200, userFound.getUserid()))
+                : ResponseEntity.ok(new ReturnMessageDTO<>("Usuário não encontrado", 404));
     }
 
     @PostMapping("/register")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     public ResponseEntity<String> register(@RequestBody UserDTO user) {
         User newUser = new User(user);
         repository.save(newUser);

@@ -9,13 +9,20 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ReturnMessageDTO {
+public class ReturnMessageDTO<T> {
     private String clientMessage;
     private String serverMessage;
     private Integer status;
+    private T data;
 
     public ReturnMessageDTO(String message, Integer status) {
         this.clientMessage = message;
         this.status = status;
+    }
+
+    public ReturnMessageDTO(String message, Integer status, T data) {
+        this.clientMessage = message;
+        this.status = status;
+        this.data = data;
     }
 }

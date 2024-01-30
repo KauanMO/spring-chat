@@ -1,7 +1,6 @@
 package com.springchat.springchat.domains.message;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import com.springchat.springchat.domains.user.User;
 
@@ -13,8 +12,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

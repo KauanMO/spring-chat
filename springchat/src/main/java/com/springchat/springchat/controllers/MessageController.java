@@ -32,18 +32,20 @@ public class MessageController {
     private MessageService service;
 
     @PostMapping(consumes = "application/json")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
+    @SendTo("/topic/messages")
+    @MessageMapping("/sendMessage")
     public ResponseEntity<ReturnMessageDTO> registerMessage(@RequestBody MessageDTO message) {
         Message mensagem = new Message(message);
         if (mensagem.getDate() == null) mensagem.setDate(LocalDateTime.now());
 
         repository.save(mensagem);
 
-        return ResponseEntity.ok(new ReturnMessageDTO("Mensagem enviada", 200));
+        return ResponseEntity.ok(new ReturnMessageDTO<Message>("Mensagem enviada", 200, mensagem));
     }
 
     @GetMapping
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     public ResponseEntity<List<Message>> findLastMessages() {
         List<MessageProjection> messageProjections = repository.findLastMessagesWithProjection(PageRequest.of(0,20));
         List<Message> messages = service.convertProjectionsToMessages(messageProjections);

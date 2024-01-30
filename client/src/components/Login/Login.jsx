@@ -27,7 +27,8 @@ export const Login = () => {
             const login = await loginRes.json();
 
             if (login.status === 200) {
-                sessionStorage.setItem('id', login.clientMessage);
+                sessionStorage.setItem('id', login.data);
+                sessionStorage.setItem('username', username);
                 navigate('/chat');
             }
         } catch (e) {
