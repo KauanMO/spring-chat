@@ -2,8 +2,6 @@
     position: relative;
     width: 50%;
     height: 100%;
-    border-right: 1px solid black;
-    border-left: 1px solid black;
 }
 
 .submit_button {
@@ -30,4 +28,12 @@
     position: absolute;
     width: 100%;
     bottom: 7%;
+}
+
+.my_message {
+    background-color: green;
+}
+
+.other_message {
+    background-color: #004385;
 }
