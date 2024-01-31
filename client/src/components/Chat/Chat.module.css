@@ -26,7 +26,7 @@
     background-color: #004385;
 }
 
-.chat_message {
+.chat_input_message {
     position: absolute;
     width: 100%;
     bottom: 7%;

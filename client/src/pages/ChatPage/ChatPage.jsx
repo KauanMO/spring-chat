@@ -18,8 +18,8 @@ export const ChatPage = () => {
 
             stompClient.subscribe('/topic/messages', message => {
                 const newMessage = JSON.parse(message.body);
-                console.log(newMessage);
-                // setMessages((prevMessages) => [...prevMessages, newMessage]);
+
+                setMessages(oldMessages => [...oldMessages, newMessage.body.data]);
             });
         });
 
@@ -40,7 +40,7 @@ export const ChatPage = () => {
 
     return (
         <div className={styles.container} onMouseEnter={verifyLogin}>
-            <Chat stompClient={stompClient} />
+            <Chat stompClient={stompClient} messages={messages} />
         </div>
     );
 }
