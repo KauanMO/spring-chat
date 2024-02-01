@@ -6,6 +6,11 @@ import { ClickableText } from "../Text/Text";
 import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
+    const navigate = useNavigate();
+
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
     const wave_1 = useRef(null), wave_2 = useRef(null), wave_3 = useRef(null);
 
     useEffect(() => {
@@ -14,12 +19,7 @@ export const Login = () => {
             wave_2.current.classList.add(styles.wave_2);
             wave_3.current.classList.add(styles.wave_3);
         }
-    }, [])
-
-    const navigate = useNavigate();
-
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    }, [username, password])
 
     async function handleOnClickLogin() {
         try {
@@ -66,22 +66,15 @@ export const Login = () => {
                 fill="#046997" fillOpacity="0.90" />
         </svg >
     }
-
-    const Waves = ({ waves }) => {
-        return waves.map(wave => {
-            return wave;
-        });
-    };
-
     return (
         <div className={styles.container}>
-            <Waves waves={[<Wave1 />, <Wave2 />, <Wave3 />]} />
+            <Wave1 /> <Wave2 /> <Wave3 />
 
             <div className={styles.form_container}>
                 <Input id={'input_username'} type={'text'} handleOnChange={e => { setUsername(e.target.value); }} styleClass={'login'} label={'Usuário'} />
                 <Input id={'input_senha'} type={'password'} handleOnChange={e => { setPassword(e.target.value); }} styleClass={'login'} label={'Senha'} />
                 <Button label={'Login'} handleOnClick={handleOnClickLogin} styleClass={'login'} />
-                <ClickableText text={'Não possuo uma conta'} color={'black'} fontSize={'1.1rem'} handleOnClick={() => { navigate('/register') }} />
+                <ClickableText text={'Não possuo uma conta'} color={'white'} fontSize={'1.6rem'} handleOnClick={() => { navigate('/register') }} />
             </div>
         </div>
     );

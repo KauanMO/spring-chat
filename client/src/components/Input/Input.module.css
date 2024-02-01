@@ -6,7 +6,6 @@
 
 .input:focus {
     outline: none;
-    border-bottom: 2px solid black;
 }
 
 .container {
@@ -24,9 +23,10 @@ label.login {
 }
 
 input.login {
-    height: 2rem;
+    height: 2.6rem;
     border: none;
     border-radius: 140px;
+    font-size: 28px;
 }
 
 .chat_message {
