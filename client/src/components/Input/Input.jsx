@@ -1,10 +1,15 @@
 import React from "react";
 import styles from './Input.module.css'
 
-export const Input = ({ type, label, styleClass, handleOnChange, children, handleOnKeyDown, name, handleOnInput }) => {
+export const Input = ({ type, label, styleClass, handleOnChange, children, handleOnKeyDown, name, handleOnInput, placeholder }) => {
     return (
         <div className={styles.container}>
-            <input onInput={handleOnInput} name={name} id={name} onChange={handleOnChange} onKeyDown={handleOnKeyDown} placeholder={label} className={`${styles[styleClass]} ${styles.input}`} type={type} />
+            {label
+                ? <label className={styles[styleClass]}>{label}</label>
+                : ''
+            }
+
+            <input onInput={handleOnInput} name={name} id={name} onChange={handleOnChange} onKeyDown={handleOnKeyDown} placeholder={placeholder} className={`${styles[styleClass]} ${styles.input}`} type={type} />
             {children}
         </div>
     );

@@ -67,21 +67,21 @@ export const Login = () => {
         </svg >
     }
 
-    const FormWave = () => {
-        return <svg className={styles.form_wave} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#1065A4" fill-opacity="1" d="M0,160L30,149.3C60,139,120,117,180,112C240,107,300,117,360,138.7C420,160,480,192,540,218.7C600,245,660,267,720,256C780,245,840,203,900,202.7C960,203,1020,245,1080,261.3C1140,277,1200,267,1260,229.3C1320,192,1380,128,1410,96L1440,64L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path></svg>
-    }
+    const Waves = ({ waves }) => {
+        return waves.map(wave => {
+            return wave;
+        });
+    };
 
     return (
         <div className={styles.container}>
-            <Wave1 />
-            <Wave2 />
-            <Wave3 />
+            <Waves waves={[<Wave1 />, <Wave2 />, <Wave3 />]} />
 
             <div className={styles.form_container}>
-                <Input id={'input_username'} type={'text'} handleOnChange={e => { setUsername(e.target.value); }} styleClass={'login'} label={'Username'} />
+                <Input id={'input_username'} type={'text'} handleOnChange={e => { setUsername(e.target.value); }} styleClass={'login'} label={'Usuário'} />
                 <Input id={'input_senha'} type={'password'} handleOnChange={e => { setPassword(e.target.value); }} styleClass={'login'} label={'Senha'} />
-                {/* <Button label={'Login'} handleOnClick={handleOnClickLogin} styleClass={'login'} /> */}
-                {/* <ClickableText text={'Não possuo uma conta'} color={'black'} fontSize={'1.1rem'} handleOnClick={() => { navigate('/register') }} /> */}
+                <Button label={'Login'} handleOnClick={handleOnClickLogin} styleClass={'login'} />
+                <ClickableText text={'Não possuo uma conta'} color={'black'} fontSize={'1.1rem'} handleOnClick={() => { navigate('/register') }} />
             </div>
         </div>
     );
