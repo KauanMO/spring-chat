@@ -5,7 +5,6 @@ import { Input } from "../Input/Input";
 
 export const Chat = ({ stompClient, messages }) => {
     const [message, setMessage] = useState('');
-    console.log(messages);
 
     const SubmitButton = () => {
         return <div onClick={sendMessage} className={styles.submit_button}>
@@ -33,7 +32,7 @@ export const Chat = ({ stompClient, messages }) => {
     const Message = ({ m }) => {
         return (
             <div>
-                <span className={m.user.userid == sessionStorage.getItem('id')
+                <span className={m.user.userid === sessionStorage.getItem('id')
                     ? styles.my_message
                     : styles.other_message}>
                     {m.message}
