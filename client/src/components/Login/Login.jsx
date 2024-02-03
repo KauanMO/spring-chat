@@ -11,7 +11,7 @@ export const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const wave_1 = useRef(null), wave_2 = useRef(null), wave_3 = useRef(null);
+    const wave_1 = useRef(null), wave_2 = useRef(null), wave_3 = useRef(null), toRegisterHolder = useRef(null);
 
     useEffect(() => {
         if (wave_1.current && wave_2.current && wave_3.current) {
@@ -66,15 +66,28 @@ export const Login = () => {
                 fill="#046997" fillOpacity="0.90" />
         </svg >
     }
+
+    const toRegister = e => {
+        wave_1.current.classList.add(styles.toRegister);
+        wave_2.current.classList.add(styles.toRegister);
+        wave_3.current.classList.add(styles.toRegister);
+        toRegisterHolder.current.classList.add(styles.toRegister);
+
+        //navigate('/register')
+    }
+
     return (
         <div className={styles.container}>
+            <div ref={toRegisterHolder} className={styles.to_register_holder}></div>
             <Wave1 /> <Wave2 /> <Wave3 />
 
             <div className={styles.form_container}>
                 <Input id={'input_username'} type={'text'} handleOnChange={e => { setUsername(e.target.value); }} styleClass={'login'} label={'Usuário'} />
                 <Input id={'input_senha'} type={'password'} handleOnChange={e => { setPassword(e.target.value); }} styleClass={'login'} label={'Senha'} />
-                <Button label={'Login'} handleOnClick={handleOnClickLogin} styleClass={'login'} />
-                <ClickableText text={'Não possuo uma conta'} color={'white'} fontSize={'1.6rem'} handleOnClick={() => { navigate('/register') }} />
+                <div className={styles.button_clickableText}>
+                    <Button label={'Login'} handleOnClick={handleOnClickLogin} styleClass={'login'} />
+                    <ClickableText text={'Não possuo uma conta'} color={'white'} fontSize={'1.6rem'} handleOnClick={toRegister} />
+                </div>
             </div>
         </div>
     );
