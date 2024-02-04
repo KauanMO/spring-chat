@@ -1,5 +1,5 @@
 import React from "react";
-import { Login } from "../../components/Login/Login";
+import { Login } from "../../components/LoginRegister/LoginRegister";
 import styles from './Home.module.css'
 
 export const Home = () => {

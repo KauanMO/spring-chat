@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import styles from './Login.module.css'
+import styles from './LoginRegister.module.css'
 import { Input } from "../Input/Input";
 import { Button } from "../Button/Button";
 import { ClickableText } from "../Text/Text";
@@ -11,7 +11,8 @@ export const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const wave_1 = useRef(null), wave_2 = useRef(null), wave_3 = useRef(null), toRegisterHolder = useRef(null);
+    const [wave_1, wave_2, wave_3, toRegisterHolder, form_container]
+        = [useRef(null), useRef(null), useRef(null), useRef(null), useRef(null)];
 
     useEffect(() => {
         if (wave_1.current && wave_2.current && wave_3.current) {
@@ -19,7 +20,7 @@ export const Login = () => {
             wave_2.current.classList.add(styles.wave_2);
             wave_3.current.classList.add(styles.wave_3);
         }
-    }, [username, password])
+    }, [username, password, wave_1, wave_2, wave_3]);
 
     async function handleOnClickLogin() {
         try {
@@ -68,20 +69,22 @@ export const Login = () => {
     }
 
     const toRegister = e => {
-        wave_1.current.classList.add(styles.toRegister);
-        wave_2.current.classList.add(styles.toRegister);
-        wave_3.current.classList.add(styles.toRegister);
-        toRegisterHolder.current.classList.add(styles.toRegister);
+        const waveAnim = `${styles.wavesToRegisterAnim} forwards 900ms`;
 
-        //navigate('/register')
+        wave_1.current.style.animation = wave_2.current.style.animation = wave_3.current.style.animation = waveAnim;
+
+        toRegisterHolder.current.style.animation = `${styles.holderToRegisterAnim} forwards 690ms`;
+
+        form_container.current.style.animation = `${styles.form_wave_out} forwards 1s`
     }
 
     return (
         <div className={styles.container}>
             <div ref={toRegisterHolder} className={styles.to_register_holder}></div>
+
             <Wave1 /> <Wave2 /> <Wave3 />
 
-            <div className={styles.form_container}>
+            <div ref={form_container} className={styles.form_container}>
                 <Input id={'input_username'} type={'text'} handleOnChange={e => { setUsername(e.target.value); }} styleClass={'login'} label={'Usuário'} />
                 <Input id={'input_senha'} type={'password'} handleOnChange={e => { setPassword(e.target.value); }} styleClass={'login'} label={'Senha'} />
                 <div className={styles.button_clickableText}>
