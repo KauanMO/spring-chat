@@ -8,9 +8,6 @@ import { useNavigate } from 'react-router-dom';
 export const Login = () => {
     const navigate = useNavigate();
 
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-
     const waves = {
         login: {
             wave1: {
@@ -32,6 +29,11 @@ export const Login = () => {
         }
     }
 
+    const [username, setUsername] = useState(null);
+    const [password, setPassword] = useState(null);
+    const [switchFormText, setSwitchFormText] = useState('Não possuo uma conta');
+    const [currentForm, setCurrentForm] = useState(null);
+
     const [toRegisterHolder, form_container] = [useRef(null), useRef(null)];
 
     useEffect(() => {
@@ -39,10 +41,12 @@ export const Login = () => {
         const wave2 = document.querySelector('#wave_2_login');
         const wave3 = document.querySelector('#wave_3_login');
 
-        if (wave1, wave2, wave3) {
+        if (wave1, wave2, wave3, currentForm == null) {
             wave1.classList.add(styles.wave_1);
             wave2.classList.add(styles.wave_2);
             wave3.classList.add(styles.wave_3);
+
+            // setCurrentForm('login');
         }
 
     }, [username, password]);
@@ -96,7 +100,8 @@ export const Login = () => {
 
         button.innerText = 'Cadastrar';
 
-        document.querySelector('#switch_form').innerText = 'Já tenho uma uma conta';
+        setSwitchFormText('Já tenho uma uma conta');
+        setCurrentForm('register');
     }
 
     return (
@@ -112,7 +117,7 @@ export const Login = () => {
                 <Input id={'input_senha'} type={'password'} handleOnChange={e => { setPassword(e.target.value); }} styleClass={'login'} label={'Senha'} />
                 <div className={styles.button_clickableText}>
                     <Button name={'login_register_button'} label={'Login'} handleOnClick={handleOnClickLogin} styleClass={'login'} />
-                    <ClickableText name={'switch_form'} text={'Não possuo uma conta'} color={'white'} fontSize={'1.6rem'} handleOnClick={toRegister} />
+                    <ClickableText name={'switch_form'} text={switchFormText} color={'white'} fontSize={'1.6rem'} handleOnClick={toRegister} />
                 </div>
             </div>
         </div>

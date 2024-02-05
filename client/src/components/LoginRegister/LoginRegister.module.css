@@ -73,10 +73,11 @@
 
 .to_register_holder {
     width: 100vw;
-    height: 100vh;
+    height: 200vh;
     position: absolute;
-    background-color: #29A4C3;
-    bottom: -100%;
+    background: rgb(41, 164, 195);
+    background: linear-gradient(180deg, rgba(41, 164, 195, 1) 0%, rgba(49, 141, 178, 1) 100%);
+    bottom: -200vh;
     transition: all 300ms;
 }
 
