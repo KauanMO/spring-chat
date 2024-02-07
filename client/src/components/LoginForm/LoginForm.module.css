@@ -1,0 +1,45 @@
+@keyframes form_wave_in {
+    from {
+        background-position-y: -300%;
+    }
+
+    to {
+        background-position-y: bottom;
+    }
+}
+
+@keyframes form_wave_out {
+    from {
+        background-position-y: bottom;
+    }
+
+    to {
+        background-position-y: -300%;
+    }
+}
+
+.form_container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 6;
+    border-radius: 140px;
+    border: 8px solid #FFF;
+    width: 33%;
+    height: 50%;
+    background: url('../../assets/form_wave.svg') no-repeat;
+    background-size: 100%;
+    background-position: center;
+    transition: all 200ms ease-in;
+    animation: form_wave_in 1s forwards;
+}
+
+.button_clickableText {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 1rem;
+}

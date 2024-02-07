@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { Home } from './pages/Home/Home';
+import { LoginRegister } from './pages/LoginRegister/LoginRegister'
 import { ChatPage } from './pages/ChatPage/ChatPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />
+    element: <LoginRegister />
   },
   {
     path: 'chat',
