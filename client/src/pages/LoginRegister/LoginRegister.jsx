@@ -75,6 +75,16 @@ export const LoginRegister = () => {
         );
     }
 
+    const Bubble = () => {
+        const bubbleSrc = `./assets/bubble_${parseInt(Math.random() * 2 + 1)}.svg`;
+
+        const bubble_width = parseInt(Math.random() * 10 + 40);
+
+        return (
+            <img width={`${bubble_width}px`} className={`${styles.bubble}`} src={bubbleSrc} alt="" ></img >
+        );
+    }
+
     return (
         <div className={styles.container}>
             <div ref={toRegisterHolder} className={styles.to_register_holder}>
@@ -83,6 +93,7 @@ export const LoginRegister = () => {
 
             <div ref={toChatHolder} className={styles.to_chat_holder}>
                 <RegisterWaves />
+                <Bubble />
             </div>
 
             <HomeForm toRegisterCallback={toRegister} />

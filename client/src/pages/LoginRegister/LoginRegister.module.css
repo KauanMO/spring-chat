@@ -116,3 +116,8 @@
     background: rgb(49, 141, 178);
     background: linear-gradient(180deg, rgba(49, 141, 178, 1) 0%, rgba(4, 105, 151, 1) 100%);
 }
+
+.bubble {
+    position: absolute;
+    top: -200%;
+}
