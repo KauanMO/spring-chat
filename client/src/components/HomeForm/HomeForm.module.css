@@ -1,4 +1,4 @@
-@keyframes form_wave_in {
+@keyframes form_wave_in_animation {
     from {
         background-position-y: -300%;
     }
@@ -8,13 +8,18 @@
     }
 }
 
-@keyframes form_wave_out {
-    from {
+@keyframes form_wave_out_animation {
+    0% {
         background-position-y: bottom;
     }
-
-    to {
+    
+    50% {
         background-position-y: -300%;
+    }
+    
+    100% {
+        background-position-y: bottom;
+        background: #318DB2;
     }
 }
 
@@ -33,7 +38,7 @@
     background-size: 100%;
     background-position: center;
     transition: all 200ms ease-in;
-    animation: form_wave_in 1s forwards;
+    animation: form_wave_in_animation 1s forwards;
 }
 
 .button_clickableText {

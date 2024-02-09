@@ -1,12 +1,13 @@
 import React, { useState, useRef } from "react";
-import { Input } from "../../components/Input/Input";
-import { Button } from "../../components/Button/Button";
-import { ClickableText } from "../../components/Text/Text";
+import { Input } from "../Input/Input";
+import { Button } from "../Button/Button";
+import { ClickableText } from "../Text/Text";
 import { useNavigate } from 'react-router-dom';
-import styles from './LoginForm.module.css'
+import styles from './HomeForm.module.css';
 
-export const LoginForm = ({ toRegisterCallback }) => {
+export const HomeForm = ({ toRegisterCallback }) => {
     const navigate = useNavigate();
+
     const [clickableText, setClickableText] = useState('Não possuo uma conta');
     const [buttonText, setButtonText] = useState('Login');
     const [username, setUsername] = useState(null);
@@ -42,10 +43,10 @@ export const LoginForm = ({ toRegisterCallback }) => {
     }
 
     function toRegister(callback) {
+        formContainer.current.style.animation = `${styles.form_wave_out_animation} 800ms forwards ease-out`;
+
         setClickableText('Já possuo uma conta');
         setButtonText('Cadastrar');
-
-        formContainer.current.style.animation = `${styles.form_wave_out} 1s forwards ease-out`;
         setCurrentForm('register');
 
         callback();

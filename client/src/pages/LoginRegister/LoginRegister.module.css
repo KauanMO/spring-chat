@@ -9,19 +9,19 @@
 
 @keyframes login_wave_1_animation {
     to {
-        top: -60%;
+        top: -70%;
     }
 }
 
 @keyframes login_wave_2_animation {
     to {
-        top: -86%;
+        top: -90%;
     }
 }
 
 @keyframes login_wave_3_animation {
     to {
-        top: -90%;
+        top: -94%;
     }
 }
 
@@ -43,24 +43,29 @@
 .wave {
     position: absolute;
     width: 100%;
-    height: 70%;
     top: 0;
     transition: all 600ms ease;
+    height: 70%;
 }
 
-.wave_1 {
+.login_wave_1 {
     animation: login_wave_1_animation 400ms forwards ease-out;
     z-index: 3;
 }
 
-.wave_2 {
+.login_wave_2 {
     animation: login_wave_2_animation 500ms forwards ease-out;
     z-index: 2;
 }
 
-.wave_3 {
+.login_wave_3 {
     animation: login_wave_3_animation 550ms forwards ease-out;
     z-index: 1;
+}
+
+.register_wave_1 {
+    top: unset !important;
+    bottom: 0;
 }
 
 .to_register_holder {
