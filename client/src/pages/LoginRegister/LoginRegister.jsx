@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import styles from './LoginRegister.module.css'
 import { HomeForm } from "../../components/HomeForm/HomeForm";
 
@@ -53,6 +53,8 @@ export const LoginRegister = () => {
         document.querySelector("#wave_1_register").style.animation = `${styles.register_wave_1_animation} 1s forwards`;
         document.querySelector("#wave_2_register").style.animation = `${styles.register_wave_2_animation} 1.2s forwards`;
         document.querySelector("#wave_3_register").style.animation = `${styles.register_wave_3_animation} 1.4s forwards`;
+
+        // bubbleGeneration();
     }
 
     const LoginWaves = () => {
@@ -76,13 +78,18 @@ export const LoginRegister = () => {
     }
 
     const Bubble = () => {
-        const bubbleSrc = `./assets/bubble_${parseInt(Math.random() * 2 + 1)}.svg`;
-
-        const bubble_width = parseInt(Math.random() * 10 + 40);
-
         return (
-            <img width={`${bubble_width}px`} className={`${styles.bubble}`} src={bubbleSrc} alt="" ></img >
+            <img width={`${parseInt(Math.random() * 10 + 40)}px`} className={styles.bubble} src={`./assets/bubble_${parseInt(Math.random() * 2 + 1)}.svg`} alt="" ></img >
         );
+    }
+
+    const Bubbles = () => {
+        // Camada 100vh / 100vw position absolute aonde sera renderizado as bolhas
+        return (
+            <div>
+                
+            </div>
+        )
     }
 
     return (
@@ -93,7 +100,7 @@ export const LoginRegister = () => {
 
             <div ref={toChatHolder} className={styles.to_chat_holder}>
                 <RegisterWaves />
-                <Bubble />
+                <Bubbles />
             </div>
 
             <HomeForm toRegisterCallback={toRegister} />

@@ -120,4 +120,7 @@
 .bubble {
     position: absolute;
     top: -200%;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
