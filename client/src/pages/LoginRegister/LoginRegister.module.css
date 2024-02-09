@@ -7,6 +7,12 @@
     }
 }
 
+@keyframes holder_to_chat_animation {
+    to {
+        bottom: -100%;
+    }
+}
+
 @keyframes login_wave_1_animation {
     to {
         top: -70%;
@@ -22,6 +28,24 @@
 @keyframes login_wave_3_animation {
     to {
         top: -94%;
+    }
+}
+
+@keyframes register_wave_1_animation {
+    to {
+        top: -70%;
+    }
+}
+
+@keyframes register_wave_2_animation {
+    to {
+        top: -75%;
+    }
+}
+
+@keyframes register_wave_3_animation {
+    to {
+        top: -86%;
     }
 }
 
@@ -59,13 +83,20 @@
 }
 
 .login_wave_3 {
-    animation: login_wave_3_animation 550ms forwards ease-out;
+    animation: login_wave_3_animation 600ms forwards ease-out;
     z-index: 1;
 }
 
 .register_wave_1 {
-    top: unset !important;
-    bottom: 0;
+    z-index: 3;
+}
+
+.register_wave_2 {
+    z-index: 2;
+}
+
+.register_wave_3 {
+    z-index: 1;
 }
 
 .to_register_holder {
@@ -75,4 +106,13 @@
     bottom: -100vh;
     background: rgb(41, 164, 195);
     background: linear-gradient(180deg, rgba(41, 164, 195, 1) 0%, rgba(49, 141, 178, 1) 100%);
+}
+
+.to_chat_holder {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    bottom: -200vh;
+    background: rgb(49, 141, 178);
+    background: linear-gradient(180deg, rgba(49, 141, 178, 1) 0%, rgba(4, 105, 151, 1) 100%);
 }
