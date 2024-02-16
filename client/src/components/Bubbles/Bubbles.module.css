@@ -1,4 +1,4 @@
-@keyframes bubble_animation {
+@keyframes bubble_animation_1 {
     0%,
     100% {
         transform: translateX(0);
@@ -30,6 +30,38 @@
     }
 }
 
+@keyframes bubble_animation_2 {
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70% {
+        transform: translateX(-5px);
+    }
+
+    20%,
+    40%,
+    60% {
+        transform: translateX(5px);
+    }
+
+    80% {
+        transform: translateX(4px);
+    }
+
+    90% {
+        transform: translateX(-4px);
+    }
+
+    100% {
+        bottom: 110%;
+    }
+}
+
 .container {
     width: 100vw;
     height: 100vh;
@@ -38,6 +70,5 @@
 
 .bubble {
     position: absolute;
-    animation: bubble_animation 2s forwards ease-in;
     bottom: 0;
 }

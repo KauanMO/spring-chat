@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import styles from './Bubbles.module.css';
+import { getRandomIntNumber } from "../../utils";
 
-const Bubble = ({ bbWidth, bbSrc }) => {
+const Bubble = ({ bbWidth, bbSrc, bbAnimationDuration, bbAnimation, bbRight }) => {
     return <img
         width={`${bbWidth}%`}
         className={styles.bubble}
         src={`./assets/bubble_${bbSrc}.svg`}
-        style={{ right: `${parseInt(Math.random() * 100)}%` }}
+        style={{
+            right: `${bbRight}%`,
+            animation: `${styles[`bubble_animation_${bbAnimation}`]} ${bbAnimationDuration}s forwards ease-in`
+        }}
         alt="bubble" ></img >;
 }
 
@@ -22,8 +26,11 @@ export const Bubbles = () => {
 
         setLiveBubbles(oldLiveBubbles =>
             [...oldLiveBubbles, {
-                bbWidth: parseInt(Math.random() * 10 + 2),
-                bbSrc: parseInt(Math.random() * 2 + 1)
+                bbWidth: getRandomIntNumber(4, 2),
+                bbSrc: getRandomIntNumber(2, 1),
+                bbAnimationDuration: getRandomIntNumber(4, 2),
+                bbAnimation: getRandomIntNumber(2, 1),
+                bbRight: getRandomIntNumber(100)
             }]
         );
     }, 5000);
@@ -31,7 +38,7 @@ export const Bubbles = () => {
     return (
         <div className={styles.container}>
             {liveBubbles.map(liveBubble => {
-                return <Bubble bbSrc={liveBubble.bbSrc} bbWidth={liveBubble.bbWidth} key={liveBubble.key} />
+                return <Bubble bbRight={liveBubble.bbRight} bbSrc={liveBubble.bbSrc} bbWidth={liveBubble.bbWidth} bbAnimation={liveBubble.bbAnimation} bbAnimationDuration={liveBubble.bbAnimationDuration} key={liveBubble.key} />
             })}
         </div>
     );
