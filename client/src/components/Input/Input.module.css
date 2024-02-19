@@ -27,6 +27,7 @@ input.login {
     border: none;
     border-radius: 140px;
     font-size: 28px;
+    padding-left: 1rem;
 }
 
 .chat_message {

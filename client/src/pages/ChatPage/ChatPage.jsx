@@ -9,7 +9,13 @@ export const ChatPage = () => {
     const [stompClient, setStompClient] = useState(null);
     const [messages, setMessages] = useState([]);
 
+    const navigate = useNavigate();
+
     useEffect(() => {
+        if (!sessionStorage.getItem('id')) {
+            navigate('/');
+        }
+
         var socket = new SockJS('http://localhost:8080/ws-messages');
         const stompClient = Stomp.over(socket);
 
@@ -28,18 +34,10 @@ export const ChatPage = () => {
                 stompClient.disconnect();
             }
         };
-    }, []);
-
-    const navigate = useNavigate();
-
-    function verifyLogin() {
-        if (!sessionStorage.getItem('id')) {
-            navigate('/');
-        }
-    }
+    }, [navigate]);
 
     return (
-        <div className={styles.container} onMouseEnter={verifyLogin}>
+        <div className={styles.container}>
             <Chat stompClient={stompClient} messages={messages} />
         </div>
     );

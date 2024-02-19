@@ -5,7 +5,7 @@ import { ClickableText } from "../Text/Text";
 import { useNavigate } from 'react-router-dom';
 import styles from './HomeForm.module.css';
 
-export const HomeForm = ({ toRegisterCallback }) => {
+export const HomeForm = ({ toRegisterCallback, toChatCallback }) => {
     const navigate = useNavigate();
 
     const [clickableText, setClickableText] = useState('Não possuo uma conta');
@@ -18,25 +18,30 @@ export const HomeForm = ({ toRegisterCallback }) => {
 
     async function loginCadastro() {
         try {
-            const res = await fetch(`http://localhost:8080/user${currentForm === 'login' ? '' : '/register'}`, {
-                headers: {
-                    "Content-type": "application/json"
-                },
-                method: 'POST',
-                body: JSON.stringify({
-                    username,
-                    password
-                })
-            });
+            // const res = await fetch(`http://localhost:8080/user${currentForm === 'login' ? '' : '/register'}`, {
+            //     headers: {
+            //         "Content-type": "application/json"
+            //     },
+            //     method: 'POST',
+            //     body: JSON.stringify({
+            //         username,
+            //         password
+            //     })
+            // });
 
-            const resJson = await res.json();
+            // const resJson = await res.json();
 
-            if (resJson.status === 200) {
-                sessionStorage.setItem('id', resJson.data);
-                sessionStorage.setItem('username', username);
+            // if (resJson.status === 200) {
+            //     sessionStorage.setItem('id', resJson.data);
+            //     sessionStorage.setItem('username', username);
 
-                navigate('/chat');
+            //     navigate('/chat');
+            // }
+
+            if (currentForm === 'login') {
+                toChat(toChatCallback);
             }
+
         } catch (e) {
             console.log(e);
         }
@@ -48,6 +53,15 @@ export const HomeForm = ({ toRegisterCallback }) => {
         setClickableText('Já possuo uma conta');
         setButtonText('Cadastrar');
         setCurrentForm('register');
+
+        callback();
+    }
+
+    function toChat(callback) {
+        formContainer.current.style.opacity = '0';
+        setTimeout(() => {
+            formContainer.current.style.display = 'none';
+        }, 150);
 
         callback();
     }

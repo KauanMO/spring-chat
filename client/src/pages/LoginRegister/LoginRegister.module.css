@@ -13,6 +13,12 @@
     }
 }
 
+@keyframes holder_to_chat_to_chat_animation {
+    to {
+        bottom: 0%;
+    }
+}
+
 @keyframes login_wave_1_animation {
     to {
         top: -70%;
@@ -113,8 +119,7 @@
     height: 100vh;
     position: absolute;
     bottom: -200vh;
-    background: rgb(49, 141, 178);
-    background: linear-gradient(180deg, rgba(49, 141, 178, 1) 0%, rgba(4, 105, 151, 1) 100%);
+    background: #046997;
 }
 
 .bubble {
