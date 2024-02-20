@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom'
 import styles from './ChatPage.module.css'
 import { Chat } from "../../components/Chat/Chat";
+import { Usuarios } from "../../components/Usuarios/Usuarios";
+import { RightSide } from "../../components/RightSide/RightSide";
 import { Stomp } from '@stomp/stompjs';
-import SockJS from 'sockjs-client'
+import SockJS from 'sockjs-client';
 
 export const ChatPage = () => {
     const [stompClient, setStompClient] = useState(null);
@@ -38,7 +40,9 @@ export const ChatPage = () => {
 
     return (
         <div className={styles.container}>
+            <Usuarios />
             <Chat stompClient={stompClient} messages={messages} />
+            <RightSide />
         </div>
     );
 }

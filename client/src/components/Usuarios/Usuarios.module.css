@@ -1,0 +1,75 @@
+@keyframes come_animation {
+    from {
+        bottom: -100%;
+    }
+
+    to {
+        bottom: 0;
+    }
+}
+
+.container {
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.usuarios {
+    position: relative;
+    height: 90%;
+    width: 80%;
+    border: 6px rgba(4, 67, 96, 0.45) solid;
+    border-radius: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: come_animation 500ms forwards;
+}
+
+.title_container {
+    width: 100%;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.title {
+    color: white;
+    font-size: 1.8rem;
+}
+
+.online_icon {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+.online {
+    background-color: #40B88B;
+}
+
+.offline {
+    background-color: #044360;
+}
+
+.usuario_container {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.usuario_name {
+    color: white;
+    font-size: 1.7rem;
+}
+
+.usuarios_list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .7rem;
+}

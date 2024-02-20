@@ -2,7 +2,7 @@
     width: 100dvw;
     height: 100dvh;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     overflow: hidden;
     background-color: #046997;
 }

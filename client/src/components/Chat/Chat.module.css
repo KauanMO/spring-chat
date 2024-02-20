@@ -1,7 +1,19 @@
+@keyframes come_animation {
+    from {
+        bottom: -100%;
+    }
+
+    to {
+        bottom: 0;
+    }
+}
+
 .container {
     position: relative;
-    width: 50%;
+    width: 45%;
     height: 100%;
+    background-color: #29A4C3;
+    animation: come_animation 500ms forwards;
 }
 
 .my_message {
