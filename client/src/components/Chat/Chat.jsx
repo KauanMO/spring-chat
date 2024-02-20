@@ -37,7 +37,7 @@ export const Chat = ({ stompClient, messages }) => {
 
     return (
         <div className={styles.container}>
-            
+
         </div>
     );
 }

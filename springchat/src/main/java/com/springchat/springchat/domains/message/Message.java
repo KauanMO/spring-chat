@@ -29,14 +29,14 @@ public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String messageid;
-    
+
     private String message;
 
     @Column(name = "date", columnDefinition = "datetime default current_timestamp")
     private LocalDateTime date;
 
     @ManyToOne
-    @JoinColumn(name="userid")
+    @JoinColumn(name = "userid")
     private User user;
 
     public Message(MessageDTO messageDTO) {

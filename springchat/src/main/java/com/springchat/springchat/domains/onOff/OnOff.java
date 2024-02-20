@@ -6,8 +6,8 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Table(name = "OnOff")
-@Entity(name = "OnOff")
+@Table(name = "Onoff")
+@Entity(name = "Onoff")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -18,6 +18,7 @@ public class OnOff {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String onoffid;
 
+    @Column(name = "ison")
     private Boolean isOn;
 
     @Column(name = "date", columnDefinition = "datetime default current_timestamp")

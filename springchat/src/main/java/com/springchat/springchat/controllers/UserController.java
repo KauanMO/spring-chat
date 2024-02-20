@@ -1,5 +1,6 @@
 package com.springchat.springchat.controllers;
 
+import com.springchat.springchat.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,9 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserRepository repository;
+
+    @Autowired
+    private UserService service;
 
     @PostMapping(consumes = "application/json")
     @CrossOrigin
@@ -39,14 +43,6 @@ public class UserController {
     @GetMapping
     @CrossOrigin
     public ResponseEntity<ReturnMessageDTO> getUsers() {
-        List<User.UserToClient> users = new ArrayList<>();
-
-        List<User> usersFount = repository.findAll();
-
-        for (User user : usersFount) {
-            users.add(new User.UserToClient(user.getUsername(), user.getUserid()));
-        }
-
-        return ResponseEntity.ok(new ReturnMessageDTO<List<User.UserToClient>>(200, users));
+        return ResponseEntity.ok(new ReturnMessageDTO<List<User.UserToClient>>(200, service.generateUsersToClientList(repository.findAll())));
     }
 }
