@@ -25,4 +25,9 @@ public class ReturnMessageDTO<T> {
         this.status = status;
         this.data = data;
     }
+
+    public ReturnMessageDTO(Integer status, T data) {
+        this.status = status;
+        this.data = data;
+    }
 }

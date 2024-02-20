@@ -2,16 +2,15 @@ package com.springchat.springchat.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.springchat.springchat.domains.returnMessage.ReturnMessageDTO;
 import com.springchat.springchat.domains.user.User;
 import com.springchat.springchat.domains.user.UserDTO;
 import com.springchat.springchat.repositories.UserRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -35,5 +34,19 @@ public class UserController {
         repository.save(newUser);
 
         return ResponseEntity.ok(newUser.getUserid());
+    }
+
+    @GetMapping
+    @CrossOrigin
+    public ResponseEntity<ReturnMessageDTO> getUsers() {
+        List<User.UserToClient> users = new ArrayList<>();
+
+        List<User> usersFount = repository.findAll();
+
+        for (User user : usersFount) {
+            users.add(new User.UserToClient(user.getUsername(), user.getUserid()));
+        }
+
+        return ResponseEntity.ok(new ReturnMessageDTO<List<User.UserToClient>>(200, users));
     }
 }

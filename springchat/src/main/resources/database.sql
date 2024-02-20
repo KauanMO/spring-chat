@@ -15,3 +15,11 @@ CREATE TABLE Message(
     userid VARCHAR(255),
     CONSTRAINT FOREIGN KEY (userid) REFERENCES User(userid)
 );
+
+CREATE TABLE OnOff (
+    onoffid VARCHAR(255) PRIMARY KEY,
+    isOn BOOLEAN NOT NULL,
+    date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    userid VARCHAR(255),
+    CONSTRAINT FOREIGN KEY (userid) REFERENCES User(userid)
+);
