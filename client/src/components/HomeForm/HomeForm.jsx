@@ -35,13 +35,12 @@ export const HomeForm = ({ toRegisterCallback, toChatCallback }) => {
             //     sessionStorage.setItem('id', resJson.data);
             //     sessionStorage.setItem('username', username);
 
-            //     navigate('/chat');
+            toChat(toChatCallback);
+
+            setTimeout(() => {
+                navigate('/chat');
+            }, 700)
             // }
-
-            if (currentForm === 'login') {
-                toChat(toChatCallback);
-            }
-
         } catch (e) {
             console.log(e);
         }

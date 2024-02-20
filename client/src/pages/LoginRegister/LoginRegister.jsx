@@ -57,8 +57,8 @@ export const LoginRegister = () => {
     }
 
     const toChat = () => {
-        toRegisterHolder.current.style.animation = `${styles.holder_to_register_animation} 800ms forwards ease-out`;
-        toChatHolder.current.style.animation = `${styles.holder_to_chat_to_chat_animation} 800ms forwards ease-out`;
+        toRegisterHolder.current.style.animation = `${styles.holder_to_register_animation} 500ms forwards ease-out`;
+        toChatHolder.current.style.animation = `${styles.holder_to_chat_to_chat_animation} 500ms forwards ease-out`;
 
         document.querySelector("#wave_1_register").style.animation = `${styles.register_wave_1_animation} 500ms forwards`;
         document.querySelector("#wave_2_register").style.animation = `${styles.register_wave_2_animation} 500ms forwards`;
@@ -78,9 +78,9 @@ export const LoginRegister = () => {
     const RegisterWaves = () => {
         return (
             <>
-                <Wave specificClass={`${styles.register_wave_1}`} path={waves.register.wave1.path} color={waves.register.wave1.color} id={'wave_1_register'} />
-                <Wave specificClass={`${styles.register_wave_2}`} path={waves.register.wave2.path} color={waves.register.wave2.color} id={'wave_2_register'} />
-                <Wave specificClass={`${styles.register_wave_3}`} path={waves.register.wave3.path} color={waves.register.wave3.color} id={'wave_3_register'} />
+                <Wave specificClass={styles.register_wave_1} path={waves.register.wave1.path} color={waves.register.wave1.color} id={'wave_1_register'} />
+                <Wave specificClass={styles.register_wave_2} path={waves.register.wave2.path} color={waves.register.wave2.color} id={'wave_2_register'} />
+                <Wave specificClass={styles.register_wave_3} path={waves.register.wave3.path} color={waves.register.wave3.color} id={'wave_3_register'} />
             </>
         );
     }

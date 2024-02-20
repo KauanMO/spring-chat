@@ -12,9 +12,9 @@ export const ChatPage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!sessionStorage.getItem('id')) {
-            navigate('/');
-        }
+        // if (!sessionStorage.getItem('id')) {
+        //     navigate('/');
+        // }
 
         var socket = new SockJS('http://localhost:8080/ws-messages');
         const stompClient = Stomp.over(socket);

@@ -18,7 +18,7 @@ export const Bubbles = () => {
     const [liveBubbles, setLiveBubbles] = useState([]);
 
     setTimeout(() => {
-        if (liveBubbles.length > 5) {
+        if (liveBubbles.length > 10) {
             setLiveBubbles(oldLiveBubbles => {
                 return oldLiveBubbles.splice(0, oldLiveBubbles.length / 2);
             });
@@ -28,7 +28,7 @@ export const Bubbles = () => {
             [...oldLiveBubbles, {
                 bbWidth: getRandomIntNumber(4, 2),
                 bbSrc: getRandomIntNumber(2, 1),
-                bbAnimationDuration: getRandomIntNumber(4, 2),
+                bbAnimationDuration: getRandomIntNumber(6, 3),
                 bbAnimation: getRandomIntNumber(2, 1),
                 bbRight: getRandomIntNumber(100)
             }]
