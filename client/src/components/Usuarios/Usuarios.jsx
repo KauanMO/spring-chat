@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from './Usuarios.module.css';
 
 const Usuario = ({ name, online = false }) => {
@@ -11,6 +11,27 @@ const Usuario = ({ name, online = false }) => {
 }
 
 export const Usuarios = () => {
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        async function findUsers() {
+            const usersRes = await fetch(`http://localhost:8080/user`);
+            const userJson = await usersRes.json();
+
+            let onOffUsers = new Map();
+
+            userJson.data.forEach(user => {
+                onOffUsers.set(user.userid, false);
+            });
+
+            // const onOffRes = await fetch(`http://localhost:8080/`)
+
+            setUsers(userJson.data);
+        }
+
+        findUsers()
+    }, [])
+
     return (
         <div className={styles.container}>
             <div className={styles.usuarios}>
@@ -18,8 +39,13 @@ export const Usuarios = () => {
                     <span className={styles.title}>Usuários</span>
                 </div>
                 <div className={styles.usuarios_list}>
-                    <Usuario name={'Kauan Oliveira'} />
-                    <Usuario name={'Melissa Rodrigues'} online />
+                    {users[0]
+                        ? users.map(user => {
+                            return (
+                                <Usuario key={user} name={user.username} />
+                            )
+                        })
+                        : 'Buscando usuários'}
                 </div>
             </div>
         </div>

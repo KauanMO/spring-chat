@@ -26,6 +26,7 @@ public class UserController {
     @CrossOrigin
     public ResponseEntity<ReturnMessageDTO> login(@RequestBody UserDTO user) {
         User userFound = repository.findByUsernameAndPassword(user.username(), user.password());
+
         return userFound != null
                 ? ResponseEntity.ok(new ReturnMessageDTO<String>("Login realizado", 200, userFound.getUserid()))
                 : ResponseEntity.ok(new ReturnMessageDTO<>("Usuário não encontrado", 404));

@@ -7,6 +7,8 @@ import com.springchat.springchat.domains.returnMessage.ReturnMessageDTO;
 import com.springchat.springchat.repositories.OnOffRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -18,7 +20,9 @@ public class OnOffController {
     private OnOffRepository repo;
 
     @CrossOrigin
-    @PostMapping
+    @PostMapping(consumes = "application/json")
+    @SendTo("/topic/users")
+    @MessageMapping("/registerOnOff")
     public ResponseEntity<ReturnMessageDTO> registerOnOff(@RequestBody OnOffDTO onOff) {
         OnOff newOnOff = new OnOff(onOff);
         if (newOnOff.getDate() == null) newOnOff.setDate(LocalDateTime.now());
